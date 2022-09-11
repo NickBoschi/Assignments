@@ -9,24 +9,25 @@
 <style>
 
 .dropdown {
-    font-size: 14pt;
+    font-size: 13.5pt;
     font-family: sans-serif;
-    font-weight: bold;
-    /* border: solid;
-    border-width: 1px; */
     display: inline-block;
-    padding-right: 65px;
+    padding: 5px 55px 5px 11px;
+    position: relative;
+
 }
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color:aquamarine;
-    z-index: 1;
+    background-color: rgb(0, 200, 0);
     font-weight: normal;
+    width: 95px;
+    font-size: 12pt;
+    z-index: 1;
 }
 
 .dropdown:hover {
-    background-color: blanchedalmond;
+    background-color: rgb(0, 200, 0);
 }
 
 .dropdown:hover .dropdown-content{
@@ -34,7 +35,7 @@
 }
 
 .dropdown-content p:hover {
-    background-color:blueviolet;
+    background-color: rgb(0, 256, 0);
 
 }
 
@@ -42,23 +43,40 @@
     background-color: white;
 	border-left-style: solid;
     border-width: 5px;
-    padding: 5px 15px;
+    padding: 1px 15px 7px 15px;
     max-width: 1150px;
     margin: 30px auto;
     font-family: sans-serif;
 }
 
-.bar {
-    background-color: rgb(0, 150, 0);
-    padding: 10px;
-    position: fixed;
+body {
+	background-color: rgba(0, 220, 70, 12%);
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    background-color: rgba(0, 150, 50, 97%);
+    overflow: hidden;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
 }
 
-body {
-	background-color: rgba(0, 220, 70, 12%);
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    padding: 5px 10px;
+    text-decoration: none;
+    text-align: left;
+}
+
+li a:hover {
+    background-color: rgb(0, 250, 0);
 }
 
 #div1 {
@@ -72,47 +90,49 @@ body {
 
 <body>
 
-<div class="bar">
-    <div class="dropdown">
-        <span>File</span>
-        <div class="dropdown-content">
-          <p>New</p>
-          <p>Open</p>
-          <p>Save</p>
-          <p>Print</p>
-          <p>Close</p>
-        </div>
-    </div>
+    <ul>
+        <li class="dropdown">
+            <span><b>File</b></span>
+            <div class="dropdown-content">
+                <a href="#new">New</a>
+                <a href="#open">Open</a>
+                <a href="#save">Save</a>
+                <a href="#print">Print</a>
+                <a href="#close">Close</a>
+            </div>
+        </li>
 
-    <div class="dropdown">
-        <span>Edit</span>
-        <div class="dropdown-content">
-            <p>Undo</p>
-            <p>Redo</p>
-            <p>Cut</p>
-            <p>Copy</p>
-            <p>Paste</p>
-            <p>Delete</p>
-            <p>Select All</p>
-        </div>
-    </div>
+        <li class="dropdown">
+            <span>Edit</span>
+            <div class="dropdown-content">
+                <a href="#undo">Undo</a>
+                <a href="#redo">Redo</a>
+                <a href="#cut">Cut</a>
+                <a href="#copy">Copy</a>
+                <a href="#paste">Paste</a>
+                <a href="#delete">Delete</a>
+                <a href="#select-all">Select All</a>
+            </div>
+        </li>
 
-    <div class="dropdown">
-        <span>View</span>
-        <div class="dropdown-content">
-            <p>Zoom In</p>
-            <p>Zoom Out</p>
-            <p>Actual Size</p>
-            <p>Fit Page</p>
-            <p>Fit Width</p>
-            <p>Fit Height</p>
-            <p>Rotate Left</p>
-            <p>Rotate Right</p>
-            <p>Full Screen</p>
-        </div>
-    </div>
-</div>
+        <li class="dropdown">
+            <span><b>View</b></span>
+            <div class="dropdown-content">
+                <a href="#zoom-in">Zoom In</a>
+                <a href="#zoom-out">Zoom Out</a>
+                <a href="#actual-size">Actual Size</a>
+                <a href="#fit-page">Fit Page</a>
+                <a href="#fit-width">Fit Width</a>
+                <a href="#fit-height">Fit Height</a>
+                <a href="#rotate-left">Rotate Left</a>
+                <a href="#rotate-right">Rotate Right</a>
+                <a href="#full-screen">Full Screen</a>
+            </div>
+        </li>
+    </ul>
 
+    <br>
+    
     <div class="info-box" id="div1">
         <h3>Instructions</h3>
         <p>Recreate this page using <b><i>only CSS</i></b>. Do yourself a favor and 1) Do not view the source. Figure it out yourself. 2) Do not search for the solution. Learn CSS until you know enough to do this.</p>
