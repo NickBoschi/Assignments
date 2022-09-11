@@ -19,15 +19,17 @@
 .dropdown-content {
     display: none;
     position: absolute;
-    background-color: rgb(0, 200, 0);
+    left: 0;
+    right: 0;
+    top: 31px;
+    background-color: rgb(0, 190, 50);
     font-weight: normal;
-    width: 95px;
     font-size: 12pt;
     z-index: 1;
 }
 
 .dropdown:hover {
-    background-color: rgb(0, 200, 0);
+    background-color: rgb(0, 190, 50);
 }
 
 .dropdown:hover .dropdown-content{
@@ -35,7 +37,7 @@
 }
 
 .dropdown-content p:hover {
-    background-color: rgb(0, 256, 0);
+    background-color: rgb(0, 250, 100);
 
 }
 
@@ -57,7 +59,6 @@ ul {
     margin: 0;
     padding: 0;
     background-color: rgba(0, 150, 50, 97%);
-    overflow: hidden;
     position: absolute;
     top: 0;
     left: 0;
@@ -70,9 +71,14 @@ li {
 
 li a {
     display: block;
-    padding: 5px 10px;
+    padding: 5px 14px;
     text-decoration: none;
     text-align: left;
+    color: rgb(85, 26, 139);
+}
+
+li a:active {
+    color: red;
 }
 
 li a:hover {
@@ -94,39 +100,39 @@ li a:hover {
         <li class="dropdown">
             <span><b>File</b></span>
             <div class="dropdown-content">
-                <a href="#new">New</a>
-                <a href="#open">Open</a>
-                <a href="#save">Save</a>
-                <a href="#print">Print</a>
-                <a href="#close">Close</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">New</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Open</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Save</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Print</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Close</a>
             </div>
         </li>
 
         <li class="dropdown">
             <span>Edit</span>
             <div class="dropdown-content">
-                <a href="#undo">Undo</a>
-                <a href="#redo">Redo</a>
-                <a href="#cut">Cut</a>
-                <a href="#copy">Copy</a>
-                <a href="#paste">Paste</a>
-                <a href="#delete">Delete</a>
-                <a href="#select-all">Select All</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Undo</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Redo</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Cut</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Copy</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Paste</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Delete</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Select All</a>
             </div>
         </li>
 
         <li class="dropdown">
             <span><b>View</b></span>
             <div class="dropdown-content">
-                <a href="#zoom-in">Zoom In</a>
-                <a href="#zoom-out">Zoom Out</a>
-                <a href="#actual-size">Actual Size</a>
-                <a href="#fit-page">Fit Page</a>
-                <a href="#fit-width">Fit Width</a>
-                <a href="#fit-height">Fit Height</a>
-                <a href="#rotate-left">Rotate Left</a>
-                <a href="#rotate-right">Rotate Right</a>
-                <a href="#full-screen">Full Screen</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Zoom In</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Zoom Out</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Actual Size</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Fit Page</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Fit Width</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Fit Height</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Rotate Left</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Rotate Right</a>
+                <a href="file:///Users/nickboschi/Projects/WebDev/Assignments/no-framework/CSSDropDown.html">Full Screen</a>
             </div>
         </li>
     </ul>
