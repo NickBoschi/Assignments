@@ -1,5 +1,16 @@
+<script setup lang="ts">
+  import { ref } from 'vue';
+  import { RouterLink } from 'vue-router';
+  import LoginBadge from './LoginBadge.vue';
+
+  let isActive = ref(false);
+</script>
+
 <template>
     <nav class="navbar" role="navigation" aria-label="main navigation">
+
+      <div class="container">
+
         <div class="navbar-brand">
           <a class="navbar-item" href="https://bulma.io">
             <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
@@ -12,15 +23,15 @@
           </a>
         </div>
       
-        <div id="navbarBasicExample" class="navbar-menu">
+        <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isActive }">
           <div class="navbar-start">
-            <a class="navbar-item">
+            <router-link to="/" class="navbar-item">
               Home
-            </a>
+            </router-link>
       
-            <a class="navbar-item">
-              Documentation
-            </a>
+            <router-link to="" class="navbar-item">
+              Recent
+            </router-link>
       
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link">
@@ -28,35 +39,32 @@
               </a>
       
               <div class="navbar-dropdown">
-                <a class="navbar-item">
+                <router-link to="/about" class="navbar-item">
                   About
-                </a>
-                <a class="navbar-item">
-                  Jobs
-                </a>
-                <a class="navbar-item">
-                  Contact
-                </a>
+                </router-link>
+
+                <router-link to="" class="navbar-item">
+                  History
+                </router-link>
+
+                <router-link to="" class="navbar-item">
+                  Friends
+                </router-link>
+                
                 <hr class="navbar-divider">
-                <a class="navbar-item">
-                  Report an issue
-                </a>
+                <router-link to="" class="navbar-item">
+                  Profile
+                </router-link>
               </div>
             </div>
           </div>
-      
+
           <div class="navbar-end">
             <div class="navbar-item">
-              <div class="buttons">
-                <a class="button is-primary">
-                  <strong>Sign up</strong>
-                </a>
-                <a class="button is-light">
-                  Log in
-                </a>
-              </div>
+              <LoginBadge></LoginBadge>
             </div>
           </div>
         </div>
-      </nav>
+      </div>
+    </nav>
 </template>
