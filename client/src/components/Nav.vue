@@ -29,8 +29,12 @@
               Home
             </router-link>
       
-            <router-link to="" class="navbar-item">
-              Recent
+            <router-link to="/activity" class="navbar-item">
+              Activity
+            </router-link>
+
+            <router-link to="/statistics" class="navbar-item">
+              Statistics
             </router-link>
       
             <div class="navbar-item has-dropdown is-hoverable">
@@ -40,14 +44,10 @@
       
               <div class="navbar-dropdown">
                 <router-link to="/about" class="navbar-item">
-                  About
+                  Recent
                 </router-link>
 
-                <router-link to="" class="navbar-item">
-                  History
-                </router-link>
-
-                <router-link to="" class="navbar-item">
+                <router-link to="/friends" class="navbar-item">
                   Friends
                 </router-link>
                 
