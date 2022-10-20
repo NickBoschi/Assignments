@@ -43,8 +43,8 @@
               </a>
       
               <div class="navbar-dropdown">
-                <router-link to="/about" class="navbar-item">
-                  Recent
+                <router-link to="/search" class="navbar-item">
+                  Search
                 </router-link>
 
                 <router-link to="/friends" class="navbar-item">
@@ -52,7 +52,7 @@
                 </router-link>
                 
                 <hr class="navbar-divider">
-                <router-link to="" class="navbar-item">
+                <router-link to="/profile" class="navbar-item">
                   Profile
                 </router-link>
               </div>
