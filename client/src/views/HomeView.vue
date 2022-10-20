@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="js">
 
 let id = 0
 
@@ -18,7 +18,7 @@ export default {
       this.workouts.push({ id: id++, text: this.newWorkout })
       this.newWorkout = ''
     },
-    removeWorkout(workout: any) {
+    removeWorkout(workout) {
       this.workouts = this.workouts.filter((t) => t !== workout)
     }
   }

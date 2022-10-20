@@ -1,4 +1,4 @@
-<script lang="ts">
+<script lang="js">
 
 let id = 0
 
@@ -24,7 +24,7 @@ export default {
       this.date = ''
       this.type = ''
     },
-    removeWorkout(workout: any) {
+    removeWorkout(workout) {
       this.workouts = this.workouts.filter((t) => t !== workout)
     }
   }
