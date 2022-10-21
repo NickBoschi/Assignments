@@ -1,4 +1,4 @@
-<script lang="js">
+<!-- <script lang="js">
 
 let id = 0
 
@@ -29,12 +29,12 @@ export default {
     },
   }
 }
-</script>
+</script> -->
 
 <template>
     <h1 class="title">My Workouts</h1>
 
-    <h2 class="subtitle">Add a new workout</h2>
+    <!-- <h2 class="subtitle">Add a new workout</h2>
     <form @submit.prevent="addWorkout">
         <label for="desc">Description</label><br>
         <input name="desc" v-model="description"><br><br>
@@ -71,5 +71,5 @@ export default {
             <td>{{ workout.date }}</td>
             <td>{{ workout.type }}</td>
         </tr>
-    </table>
+    </table> -->
 </template>

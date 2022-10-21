@@ -1,3 +1,4 @@
+
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
@@ -10,9 +11,19 @@ const router = createRouter({
       component: HomeView
     },
     {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginView.vue')
+    },
+    {
       path: '/activity',
       name: 'activity',
-      component: () => import('../views/ActivityView.vue')
+      component: () => import('../views/ActivityView.vue'),
+      // beforeEnter: (to, from, next) => {
+      //   if(isAuth) {
+      //     next('/login')
+      //   }
+      // }
     },
     {
       path: '/statistics',

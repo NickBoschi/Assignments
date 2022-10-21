@@ -16,9 +16,6 @@
         <button class="button is-primary">
             <strong>Sign Up</strong>
         </button>
-        <!-- <button class="button is-light" @click="login('Nick', 'Boschi')">
-            Log In
-        </button> -->
 
         <div class="dropdown is-active">
           <div class="dropdown-trigger">
@@ -32,8 +29,8 @@
           <div v-if="isToggle" class="dropdown-menu" id="dropdown-menu" role="menu">
             <div class="dropdown-content">
               <a class="dropdown-item" @click="login('Nick', 'Boschi')">Nick</a>
-              <a class="dropdown-item">Steve</a>
-              <a class="dropdown-item">Bobby</a>
+              <a class="dropdown-item" @click="login('Moshe', 'Plotkin')">Moshe</a>
+              <a class="dropdown-item" @click="login('User', '3')">User 3</a>
             </div>
           </div>
         </div>
