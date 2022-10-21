@@ -7,8 +7,8 @@ export default {
     return {
       users: [
         { first: 'Nick', last: 'Boschi', email: 'boschin1@newplatz.edu', isAdmin: true },
-        { first: 'Bobby', last: 'Lee', email: 'bobbylee@newplatz.edu', isAdmin: false },
-        { first: 'Andrew', last: 'Santino', email: 'cheetosantino@newplatz.edu', isAdmin: true }
+        { first: 'Moshe', last: 'Plotkin', email: 'plotkinm@newplatz.edu', isAdmin: false },
+        { first: 'User', last: '3', email: 'user3@newplatz.edu', isAdmin: false }
       ]
     }
   },
@@ -19,7 +19,6 @@ export default {
 
 <template>
     <h1 class="title">Users</h1>
-
 
     <table class="table is-bordered is-fullwidth is-hoverable">
         <tr>

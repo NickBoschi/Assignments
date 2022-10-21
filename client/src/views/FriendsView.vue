@@ -1,3 +1,3 @@
 <template>
-    <h1>Friends Page</h1>
+    <h1 class="title">Friends page</h1>
 </template>
