@@ -18,15 +18,23 @@ export default {
     }
   },
   methods: {
+    loadWorkouts() {
+      this.workouts = JSON.parse(localStorage.getItem("workout-entries") || "[]");
+    },
+    saveWorkouts() {
+      localStorage.setItem("workout-entries", JSON.stringify(this.workouts));
+    },
     addWorkout() {
       this.workouts.push({ id: id++, desc: this.description, dur: this.duration, date: this.date, type: this.type })
       this.description = ''
       this.duration = ''
       this.date = ''
       this.type = ''
+      this.saveWorkouts();
     },
     removeWorkout(workout) {
       this.workouts = this.workouts.filter((t) => t !== workout)
+      this.saveWorkouts();
     },
     modalToggle() {
       this.showModal = !this.showModal
@@ -36,7 +44,7 @@ export default {
 </script>
 
 <template>
-    <h1 class="title">My Workouts</h1>
+    <h1 onload="loadEntries()" class="title">My Workouts</h1>
 
     <div v-if="showModal" id="modal" class="modal is-active">
         <div class="modal-background" @click="modalToggle"></div>
