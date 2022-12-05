@@ -29,30 +29,6 @@
               Activity
             </router-link>
 
-            <router-link to="/statistics" class="navbar-item">
-              Statistics
-            </router-link>
-      
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link">
-                More
-              </a>
-      
-              <div class="navbar-dropdown">
-                <router-link to="/search" class="navbar-item">
-                  Search
-                </router-link>
-
-                <router-link to="/friends" class="navbar-item">
-                  Friends
-                </router-link>
-                
-                <hr class="navbar-divider">
-                <router-link to="/profile" class="navbar-item">
-                  Profile
-                </router-link>
-              </div>
-            </div>
           </div>
 
           <div class="navbar-end">

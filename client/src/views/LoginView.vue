@@ -1,6 +1,8 @@
 <script setup lang="ts">
     import { login } from '@/stores/session';
     import { ref } from 'vue';
+    import { RouterLink } from 'vue-router';
+import ActivityView from './ActivityView.vue';
 
     const name = ref('');
     const email = ref('');
@@ -9,6 +11,7 @@
 </script>
 
 <template> 
+    <h1 class="title">Please Sign In to Continue</h1>
     <div>
         <form class="box" @submit.prevent="login(name, email, password)">
             <div class="field">
@@ -32,11 +35,14 @@
                  </div>
              </div>
 
-             <button class="button is-primary">Sign in</button>
+             <RouterLink :to="{ path: '../views/ActivityView.vue' }" class="button is-primary">Sign in</RouterLink>
         </form>
     </div>
 </template>
 
 <style scoped>
+    .title {
+        margin-top: 20px;
+    }
 
 </style>

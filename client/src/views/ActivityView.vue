@@ -1,52 +1,56 @@
-<script lang="js">
+<script setup lang="ts">
+    import { computed, reactive, ref, watch } from "vue";
+    import { RouterLink } from "vue-router";
+    import { getWorkouts, removeWorkout, addWorkout, type Workout } from "../stores/workouts";
+    import { isLoading } from "@/stores/session";
 
-let id = 0
+    
+    let workouts = reactive([] as Workout[]);
+    let description = ref('');
+    //let description = '';
+    let duration = ref(0);
+    let date = ref('');
+    let type = ref('');
+    getWorkouts().then(x => workouts.push(...x.workouts));
 
-export default {
-  data() {
-    return {
-      description: '',
-      duration: '',
-      date: '',
-      type: '',
-      workouts: [
-        { id: id++, desc: 'Workout 1', dur: '47 min', date: '2022-10-8', type: 'Run' },
-        { id: id++, desc: 'Workout 2', dur: '18 hr', date: '2022-10-12', type: 'Cardio' },
-        { id: id++, desc: 'Workout 3', dur: '2 sec', date: '2022-10-18', type: 'Aerobic' }
-      ],
-      showModal: false
+
+    function add() {
+        const n = (Math.max(...workouts.map(o=>o.id))) + 1;
+        console.log(n);
+        console.log(description);
+        addWorkout(n, description.value, duration.value, date.value, type.value)
+        .then (() => {
+            window.location.reload();
+        });
+        //addWorkout(n, description, duration, date, type);
+        //window.location.reload();
     }
-  },
-  methods: {
-    loadWorkouts() {
-      this.workouts = JSON.parse(localStorage.getItem("workout-entries") || "[]");
-    },
-    saveWorkouts() {
-      localStorage.setItem("workout-entries", JSON.stringify(this.workouts));
-    },
-    addWorkout() {
-      this.workouts.push({ id: id++, desc: this.description, dur: this.duration, date: this.date, type: this.type })
-      this.description = ''
-      this.duration = ''
-      this.date = ''
-      this.type = ''
-      this.saveWorkouts();
-    },
-    removeWorkout(workout) {
-      this.workouts = this.workouts.filter((t) => t !== workout)
-      //this.saveWorkouts();
-    },
-    modalToggle() {
-      this.showModal = !this.showModal
+    function remove(w) {
+        //workouts = workouts.filter((t) => t !== w);
+        removeWorkout(w.id)
+        .then (() => {
+            window.location.reload();
+        });
+        //window.location.reload();
+        //console.log(workouts);
+        //getWorkouts().then(x => workouts.push(...x.workouts));
     }
-  }
-}
+
+    function modalToggle() {
+        var x = document.getElementById("modal");
+        if (x!.style.display === "none") {
+            x!.style.display = "block";
+        } else {
+            x!.style.display = "none";
+        }
+    }
+
 </script>
 
 <template>
-    <h1 onload="loadEntries()" class="title">My Workouts</h1>
+    <h1 class="title" id="title">My Workouts</h1>
 
-    <div v-if="showModal" id="modal" class="modal is-active">
+    <div id="modal" class="modal is-active" style="display:none">
         <div class="modal-background" @click="modalToggle"></div>
         <div class="modal-card">
 
@@ -56,13 +60,13 @@ export default {
             </header>
 
             <section class="modal-card-body">
-              <form @submit.prevent="addWorkout" id="workform">
+              <form @submit.prevent="add" id="workform">
 
                 <label for="desc" class="label">Description</label>
                 <input class="input" name="desc" v-model="description"><br><br>
 
                 <label for="dur" class="label">Duration</label>
-                <input class="input" name="dur" v-model="duration"><br><br>
+                <input class="input" type="number" name="dur" v-model="duration"><br><br>
 
                 <label for="date" class="label">Date</label>
                 <input class="input" type="date" v-model="date"><br><br>
@@ -84,31 +88,104 @@ export default {
         </div>
     </div>
 
-    <table class="table">
-        <tr>
+
+
+
+
+        <!-- <div>
+            <div v-for="workout in workouts" :key="workout.id">
+                <div>
+                    <p>Description: {{ workout.description }}</p>
+                    <p>Duration: {{ workout.duration }}</p>
+                </div>
+            </div>
+        </div>
+        <span>end</span> -->
+
+        <table class="table">
+        <tr class="title_row">
             <th>Description</th>
             <th>Duration</th>
             <th>Date</th>
             <th>Type</th>
             <th>Edit</th>
         </tr>
-        <tr v-for="workout in workouts" :key="workout.id">
-            <td>{{ workout.desc }}</td>
-            <td>{{ workout.dur }}</td>
+        <tr class="rows" v-for="workout in workouts" :key="workout.id">
+            <td>{{ workout.description }}</td>
+            <td>{{ workout.duration }} min</td>
             <td>{{ workout.date }}</td>
             <td>{{ workout.type }}</td>
             <td>
-              <button type="button" @click="removeWorkout(workout)">X</button>
+              <button @click="remove(workout)">X</button>
             </td>
         </tr>
     </table>
 
-    <button class="button is-primary" id="button" @click="modalToggle">Add new workout</button>
+    <div class="button_div">
+        <button class="button is-primary is-offset-8 is-rounded" id="button" @click="modalToggle()">Add new workout</button>
+    </div>
+
 
 </template>
 
-<style>
-  .title {
-    padding: 25px 5px 0px 5px;
-  }
+
+<style scoped>
+
+    /* .modal {
+        display: none;
+    } */
+    .title {
+        text-align: center;
+        font-size: 5em;
+    }
+    .table {
+        width: 1000px;
+        height: 200px;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+    .table th {
+        font-size: 1.2em;
+    }
+    .title_row {
+        background-color: #519cff53;
+    }
+    .rows:nth-child(odd) {
+        background-color: #f6f6f6;
+    }
+    .rows td {
+        font-size: 1.1em;
+    }
+    .button_div {
+        margin-left: 13%;
+    }
+    .workouts {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: aliceblue;
+    }
+
+    .workout {
+        flex-basis: 10em;
+        margin: 1em;
+        padding: 1em;
+        border: 1px solid black;
+        border-radius: 5px;
+        background-color: white;
+    }
+
+    .workout-info {
+        font-size: small;
+    }
+
+    .add {
+        float: right;
+    }
+
+    .is-disabled {
+        pointer-events: none;
+        opacity: .7;
+    }
+
 </style>
