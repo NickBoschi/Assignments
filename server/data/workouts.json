@@ -1,0 +1,28 @@
+{
+    "workouts": [
+        {
+            "id": 1,
+            "description": "Workout 1",
+            "duration": 47,
+            "date": "2022-11-28",
+            "type": "Run"
+        },
+        {
+            "id": 2,
+            "description": "Workout 2",
+            "duration": 18,
+            "date": "2022-12-1",
+            "type": "Cardio"
+        },
+        {
+            "id": 3,
+            "description": "Workout 3",
+            "duration": 2,
+            "date": "2022-12-2",
+            "type": "Yoga"
+        }
+    ],
+    "total": 100,
+    "skip": 0,
+    "limit": 30
+}

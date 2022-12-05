@@ -20,11 +20,11 @@ const router = createRouter({
       name: 'activity',
       component: () => import('../views/ActivityView.vue'),
     },
-    {
-      path: '/statistics',
-      name: 'statistics',
-      component: () => import('../views/StatisticsView.vue')
-    },
+    // {
+    //   path: '/statistics',
+    //   name: 'statistics',
+    //   component: () => import('../views/StatisticsView.vue')
+    // },
     {
       path: '/friends',
       name: 'friends',

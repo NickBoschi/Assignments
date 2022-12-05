@@ -34,7 +34,7 @@ export default {
     },
     removeWorkout(workout) {
       this.workouts = this.workouts.filter((t) => t !== workout)
-      this.saveWorkouts();
+      //this.saveWorkouts();
     },
     modalToggle() {
       this.showModal = !this.showModal
@@ -98,7 +98,7 @@ export default {
             <td>{{ workout.date }}</td>
             <td>{{ workout.type }}</td>
             <td>
-              <button @click="removeWorkout(workout)">X</button>
+              <button type="button" @click="removeWorkout(workout)">X</button>
             </td>
         </tr>
     </table>

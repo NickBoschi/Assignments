@@ -1,56 +1,45 @@
 const express = require('express')
 const app = express()
-const bcrypt = require('bcrypt')
 
-app.use(express.json())
+const workoutsController = require('./controllers/workouts');
 
-const users = []
+const hostname = '127.0.0.1';
+const port = process.env.PORT || 3000;
 
-app.get('/users', (req, res) => {
-    res.json(users)
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  next();
 })
 
-app.post('/users', async (req, res) => {
-    try {
-        const hashedPassword = await bcrypt.hash(req.body.password, 10)
-        const user = { name: req.body.name, password: hashedPassword }
-        users.push(user)
-        res.status(201).send() 
-    } catch {
-        res.status(500).send()
-    }
+app.use('/', express.static('./client/dist'));
 
+app.use(express.json());
+
+app
+  .get('/', (req, res) => {
+    res.status(200).send('Hello')
+  })
+  .get('/error', (req, res) => {
+    sss.PORT();
+  })
+  .use('/api/v1/workouts', workoutsController)
+
+app.get('*', (req, res) => {
+  res.sendFile('index.html', {root: './client/dist'});
 })
 
-app.post('/users/login', async(req, res) => {
-    const user = users.find(user => user.name = req.body.name)
-    if (user == null) {
-        return res.status(400).send('Cannot find user')
-    }
-    try {
-        if (await bcrypt.compare(req.body.password, user.password)) {
-            res.send('Success')
-        }
-        else {
-            res.send('Not Allowed')
-        }
-    } catch {            
-        res.status(500).send()
-    }
-
+app.use((err, req, res, next) => {
+  console.log(err);
+  res.status(err.httpCode ?? 55).send({
+    message: err.message ?? 'Something went wrong',
+    status: err.httpCode ?? 500
+  });
+  
 })
 
-app.listen(3000)
-
-// const hostname = '127.0.0.1';
-// const port = process.env.PORT || 3000;
-
-// app.get('/', (req, res) => {
-//     res.statusCode = 200;
-//     res.setHeader('Content-Type', 'text/plain');
-//     res.end('Hello');
-// });
-
-// app.listen(port, () => {
-//     console.log(`Server running at https://${hostname}:${port}`);
-// });
+app.listen(port, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
