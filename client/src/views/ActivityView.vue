@@ -63,7 +63,7 @@
               <form @submit.prevent="add" id="workform">
 
                 <label for="desc" class="label">Description</label>
-                <input class="input" name="desc" v-model="description"><br><br>
+                <input class="input" name="desc" v-model="description" placeholder="Workout Name"><br><br>
 
                 <label for="dur" class="label">Duration</label>
                 <input class="input" type="number" name="dur" v-model="duration"><br><br>

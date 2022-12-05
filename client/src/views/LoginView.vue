@@ -35,7 +35,7 @@ import ActivityView from './ActivityView.vue';
                  </div>
              </div>
 
-             <RouterLink :to="{ path: '../views/ActivityView.vue' }" class="button is-primary">Sign in</RouterLink>
+             <RouterLink :to="{ path: '/activity' }" class="button is-primary">Sign in</RouterLink>
         </form>
     </div>
 </template>
