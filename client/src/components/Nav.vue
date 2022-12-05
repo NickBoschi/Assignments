@@ -59,8 +59,17 @@
             <div class="navbar-item">
               <LoginBadge></LoginBadge>
             </div>
+            <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" target="_blank" 
+              href="https://twitter.com/intent/tweet?text=I did a workout! Good for me!">
+              <span class="icon"><i class="fab fa-twitter"></i></span><span> Tweet </span></a>
           </div>
         </div>
       </div>
     </nav>
 </template>
+
+<style>
+  .bd-tw-button {
+    margin: auto;
+  }
+</style>
