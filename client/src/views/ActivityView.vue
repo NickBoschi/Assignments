@@ -1,10 +1,25 @@
 <script setup lang="ts">
-    import { computed, reactive, ref, watch } from "vue";
+    import { defineComponent, computed, reactive, ref, watch } from "vue";
     import { RouterLink } from "vue-router";
-    import { getWorkouts, removeWorkout, addWorkout, type Workout } from "../stores/workouts";
-    import { isLoading } from "@/stores/session";
+    import { getWorkouts, removeWorkout, addWorkout, type Workout} from "../stores/workouts";
+    import { api, isLoading } from "@/stores/session";
+    import vSelect from 'vue-select';
 
     
+
+    // const data = [
+    //     "Run",
+    //     "Running",
+    //     "Yoga",
+    //     "Walk",
+    //     "Walking",
+    //     "Weight_lifting",
+    //     "Cardio",
+    //     "Aerobic",
+    // ];
+
+
+
     let workouts = reactive([] as Workout[]);
     let description = ref('');
     //let description = '';
@@ -45,6 +60,32 @@
         }
     }
 
+    // function defineComponent({
+    //     setup() => {
+    //         const name = ref('');
+    //         const selected = ref(null);
+            
+    //         const filteredDataArray = computed(() =>
+    //             data.filter(
+    //                 (option) =>
+    //                     option.toString().toLowerCase().indexOf(name.value.toLowerCase()) >= 0
+    //             )
+    //         )
+
+    //         return {
+    //             name,
+    //             selected,
+    //             filteredDataArray,
+    //         }
+    //     }
+    // })
+
+    const options = ref([] as any[]);
+    async function fetchOptions (search: string) {
+        //const result = await api<ListEnvelope<Workout>>(`workouts/search/$(search)`)
+        //options.value = result.workouts;
+    }
+
 </script>
 
 <template>
@@ -62,6 +103,21 @@
             <section class="modal-card-body">
               <form @submit.prevent="add" id="workform">
 
+                <!-- <o-field label="Find a JS framework">
+                    <o-autocomplete
+                        v-model="name"
+                        rounded
+                        expanded
+                        placeholder="e.g. jQuery"
+                        icon="search"
+                        clearable
+                        :data="filteredDataArray"
+                    >
+                        <template #empty>No results found</template>
+                    </o-autocomplete>
+                </o-field> -->
+ 
+            
                 <label for="desc" class="label">Description</label>
                 <input class="input" name="desc" v-model="description" placeholder="Workout Name"><br><br>
 
@@ -71,14 +127,18 @@
                 <label for="date" class="label">Date</label>
                 <input class="input" type="date" v-model="date"><br><br>
 
-                <label for="type" class="label">Type</label>
+                <section>
+                    <v-select :options="['Run','Walk','Yoga','Aerobic']"></v-select>
+                </section>
+
+                <!-- <label for="type" class="label">Type</label>
                 <select class="input" name="type" v-model="type">
                   <option value="Walk">Walk</option>
                   <option value="Run">Run</option>
                   <option value="Cardio">Cardio</option>
                   <option value="Aerobic">Aerobic</option>
                   <option value="Yoga">Yoga</option>
-                </select><br><br>
+                </select><br><br> -->
               </form>
             </section>
             <footer class="modal-card-foot">
@@ -87,21 +147,6 @@
             </footer>
         </div>
     </div>
-
-
-
-
-
-        <!-- <div>
-            <div v-for="workout in workouts" :key="workout.id">
-                <div>
-                    <p>Description: {{ workout.description }}</p>
-                    <p>Duration: {{ workout.duration }}</p>
-                </div>
-            </div>
-        </div>
-        <span>end</span> -->
-
         <table class="table">
         <tr class="title_row">
             <th>Description</th>
@@ -130,10 +175,6 @@
 
 
 <style scoped>
-
-    /* .modal {
-        display: none;
-    } */
     .title {
         text-align: center;
         font-size: 5em;
@@ -143,7 +184,6 @@
         height: 200px;
         margin-left: auto;
         margin-right: auto;
-
     }
     .table th {
         font-size: 1.2em;
@@ -165,7 +205,6 @@
         flex-wrap: wrap;
         background-color: aliceblue;
     }
-
     .workout {
         flex-basis: 10em;
         margin: 1em;
@@ -174,15 +213,12 @@
         border-radius: 5px;
         background-color: white;
     }
-
     .workout-info {
         font-size: small;
     }
-
     .add {
         float: right;
     }
-
     .is-disabled {
         pointer-events: none;
         opacity: .7;

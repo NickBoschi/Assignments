@@ -22,9 +22,10 @@
   "homepage": "https://github.com/NickBoschi/Assignments#readme",
   "dependencies": {
     "bcrypt": "^5.1.0",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongodb": "^4.12.1",
-    "dotenv": "^16.0.3"
+    "vue-select": "^3.20.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"

@@ -18,7 +18,7 @@ app
             } else {
                 res.status(404).send('Workout not found ' + req.params.id);
             }
-        })
+        }) 
         .catch(next);
     })
     .get('/remove/:id', (req, res, next) => {
